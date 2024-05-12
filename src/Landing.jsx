@@ -12,6 +12,7 @@ import AppAppBar from "./Components/AppAppBar";
 import getLPTheme from "./getLPTheme";
 import { AutoAwesomeRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
+import Hero from "./Components/Hero";
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
@@ -80,10 +81,11 @@ const Landing = () => {
     <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
-      <ToggleCustomTheme
+      <Hero />
+      {/* <ToggleCustomTheme
         showCustomTheme={showCustomTheme}
         toggleCustomTheme={toggleCustomTheme}
-      />
+      /> */}
     </ThemeProvider>
   );
 };

@@ -3,12 +3,16 @@ import {
   Box,
   Button,
   Container,
+  Drawer,
   MenuItem,
   Toolbar,
   Typography,
+  Divider,
 } from "@mui/material";
 import React, { useState } from "react";
 import ToggleColorMode from "./ToggleColorMode";
+import { Menu } from "@mui/icons-material";
+import PropTypes from "prop-types";
 
 const AppAppBar = ({ mode, toggleColorMode }) => {
   const [open, setOpen] = useState(false);
@@ -66,54 +70,99 @@ const AppAppBar = ({ mode, toggleColorMode }) => {
           >
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <MenuItem
-                onClick={() => scrollToSection("features")}
+                onClick={() => scrollToSection("about")}
                 sx={{ py: "6px", px: "12px" }}
               >
                 <Typography variant="body2" color="text.primary">
-                  Features
+                  About
                 </Typography>
               </MenuItem>
               <MenuItem
-                onClick={() => scrollToSection("testimonials")}
+                onClick={() => scrollToSection("experience")}
                 sx={{ py: "6px", px: "12px" }}
               >
                 <Typography variant="body2" color="text.primary">
-                  Testimonials
+                  Experience
                 </Typography>
               </MenuItem>
               <MenuItem
-                onClick={() => scrollToSection("highlights")}
+                onClick={() => scrollToSection("projects")}
                 sx={{ py: "6px", px: "12px" }}
               >
                 <Typography variant="body2" color="text.primary">
-                  Highlights
+                  Projects
                 </Typography>
               </MenuItem>
               <MenuItem
-                onClick={() => scrollToSection("pricing")}
+                onClick={() => scrollToSection("resume")}
                 sx={{ py: "6px", px: "12px" }}
               >
                 <Typography variant="body2" color="text.primary">
-                  Pricing
-                </Typography>
-              </MenuItem>
-              <MenuItem
-                onClick={() => scrollToSection("faq")}
-                sx={{ py: "6px", px: "12px" }}
-              >
-                <Typography variant="body2" color="text.primary">
-                  FAQ
+                  Resume
                 </Typography>
               </MenuItem>
             </Box>
             <Box>
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
             </Box>
+            <Box sx={{ display: { sm: "", md: "none" } }}>
+              <Button
+                variant="text"
+                color="primary"
+                aria-label="menu"
+                onClick={() => toggleDrawer(true)}
+                sx={{ minWidth: "30px", p: "4px" }}
+              >
+                <Menu />
+              </Button>
+              <Drawer
+                anchor="right"
+                open={open}
+                onClose={() => toggleDrawer(false)}
+              >
+                <Box
+                  sx={{
+                    minWidth: "60dvw",
+                    p: 2,
+                    backgroundColor: "background.paper",
+                    flexGrow: 1,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "end",
+                      flexGrow: 1,
+                    }}
+                  >
+                    <ToggleColorMode
+                      mode={mode}
+                      toggleColorMode={toggleColorMode}
+                    />
+                  </Box>
+                  <MenuItem onClick={() => scrollToSection("about")}>
+                    About
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection("experience")}>
+                    Experience
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection("projects")}>
+                    Projects
+                  </MenuItem>
+                </Box>
+              </Drawer>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
     </div>
   );
+};
+
+AppAppBar.propTypes = {
+  mode: PropTypes.oneOf(["dark", "light"]).isRequired,
+  toggleColorMode: PropTypes.func.isRequired,
 };
 
 export default AppAppBar;
