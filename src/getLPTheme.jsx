@@ -134,7 +134,7 @@ const getDesignTokens = (mode) => ({
     },
   },
   typography: {
-    fontFamily: ['"Inter", "sans-serif"'].join(","),
+    fontFamily: ['"Poppins", "sans-serif"'].join(","),
     h1: {
       fontSize: 60,
       fontWeight: 600,

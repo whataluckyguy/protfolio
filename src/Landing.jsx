@@ -13,6 +13,9 @@ import getLPTheme from "./getLPTheme";
 import { AutoAwesomeRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import Hero from "./Components/Hero";
+import Projects from "./Components/Projects";
+import Socontact from "./Components/Socontact";
+import Experience from "./Components/Experience";
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
@@ -82,10 +85,11 @@ const Landing = () => {
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
       <Hero />
-      {/* <ToggleCustomTheme
-        showCustomTheme={showCustomTheme}
-        toggleCustomTheme={toggleCustomTheme}
-      /> */}
+      <Box sx={{ bgcolor: "background.default" }}>
+        <Projects />
+        <Experience />
+        <Socontact />
+      </Box>
     </ThemeProvider>
   );
 };

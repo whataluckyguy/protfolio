@@ -69,6 +69,19 @@ const AppAppBar = ({ mode, toggleColorMode }) => {
             })}
           >
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Typography
+                component="span"
+                variant="h1"
+                sx={{
+                  fontSize: "clamp(2rem, 10vw, 1rem)",
+                  color: (theme) =>
+                    theme.palette.mode === "light"
+                      ? "primary.main"
+                      : "primary.light",
+                }}
+              >
+                Lalit
+              </Typography>
               <MenuItem
                 onClick={() => scrollToSection("about")}
                 sx={{ py: "6px", px: "12px" }}
