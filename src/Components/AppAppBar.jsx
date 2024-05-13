@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import ToggleColorMode from "./ToggleColorMode";
 import { Menu } from "@mui/icons-material";
 import PropTypes from "prop-types";
+import file from "./Resume.pdf";
 
 const AppAppBar = ({ mode, toggleColorMode }) => {
   const [open, setOpen] = useState(false);
@@ -32,6 +33,13 @@ const AppAppBar = ({ mode, toggleColorMode }) => {
       });
       setOpen(false);
     }
+  };
+
+  const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = file;
+    link.download = "Resume_Lalit_Kumar.pdf";
+    link.click();
   };
 
   return (
@@ -83,19 +91,11 @@ const AppAppBar = ({ mode, toggleColorMode }) => {
                 Lalit
               </Typography>
               <MenuItem
-                onClick={() => scrollToSection("about")}
+                onClick={() => scrollToSection("hero")}
                 sx={{ py: "6px", px: "12px" }}
               >
                 <Typography variant="body2" color="text.primary">
                   About
-                </Typography>
-              </MenuItem>
-              <MenuItem
-                onClick={() => scrollToSection("experience")}
-                sx={{ py: "6px", px: "12px" }}
-              >
-                <Typography variant="body2" color="text.primary">
-                  Experience
                 </Typography>
               </MenuItem>
               <MenuItem
@@ -107,9 +107,14 @@ const AppAppBar = ({ mode, toggleColorMode }) => {
                 </Typography>
               </MenuItem>
               <MenuItem
-                onClick={() => scrollToSection("resume")}
+                onClick={() => scrollToSection("experience")}
                 sx={{ py: "6px", px: "12px" }}
               >
+                <Typography variant="body2" color="text.primary">
+                  Experience
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={downloadResume} sx={{ py: "6px", px: "12px" }}>
                 <Typography variant="body2" color="text.primary">
                   Resume
                 </Typography>

@@ -1,8 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/system";
+// import { useTheme } from "@mui/system";
 import { GitHub, Instagram, LinkedIn } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 
@@ -21,14 +21,14 @@ const Socontact = () => {
 
   return (
     <Box id="logoCollection" sx={{ py: 4 }}>
-      <Typography
+      {/* <Typography
         component="p"
         variant="subtitle2"
         align="center"
         color="text.secondary"
       >
         Follow me on...
-      </Typography>
+      </Typography> */}
       <Grid container justifyContent="center" sx={{ mt: 0.5, opacity: 0.6 }}>
         {Logos.map((logo, index) => (
           <Grid item key={index}>

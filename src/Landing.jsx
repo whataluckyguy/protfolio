@@ -88,6 +88,7 @@ const Landing = () => {
       <Box sx={{ bgcolor: "background.default" }}>
         <Projects />
         <Experience />
+
         <Socontact />
       </Box>
     </ThemeProvider>

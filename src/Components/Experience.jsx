@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Typography, Grid, Card, CardContent } from "@mui/material";
-import { styled } from "@mui/material/styles";
-
-const Heading = styled(Typography)(({ theme }) => ({
-  position: "sticky",
-  top: theme.spacing(4),
-  textAlign: "left",
-}));
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineItem,
+  TimelineSeparator,
+} from "@mui/lab";
+import { Typography } from "@mui/material";
+import React from "react";
 
 const experienceData = [
   {
@@ -31,43 +32,24 @@ const experienceData = [
   },
 ];
 
-const Experience = ({ data }) => {
-  const [isHeadingSticky, setIsHeadingSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsHeadingSticky(true);
-      } else {
-        setIsHeadingSticky(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+const Experience = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} md={4}>
-        <Heading
-          variant="h5"
-          sx={{ ...(isHeadingSticky && { position: "fixed", zIndex: 1 }) }}
-        >
-          Experience
-        </Heading>
-      </Grid>
-      <Grid item xs={12} md={8}>
-        {experienceData.map((item, index) => (
-          <Card key={index} sx={{ margin: 1 }}>
-            <CardContent>
-              <Typography variant="h6">{item.title}</Typography>
-              <Typography>{item.description}</Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </Grid>
-    </Grid>
+    <Timeline position="alternate-reverse" id="experience">
+      {experienceData.map((exp, index) => (
+        <TimelineItem key={index}>
+          <TimelineSeparator>
+            <TimelineDot />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography variant="h6" component="span">
+              {exp.title}
+            </Typography>
+            <Typography>{exp.description}</Typography>
+          </TimelineContent>
+        </TimelineItem>
+      ))}
+    </Timeline>
   );
 };
 
